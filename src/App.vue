@@ -225,7 +225,7 @@ export default {
   min-width: 50%;
   max-height: 140px;
   overflow: hidden;
-  display: inline-flex;
+  display: flex;
   justify-content: flex-end;
   cursor: pointer;
   font-family: 'Merriweather', serif;
@@ -264,9 +264,6 @@ export default {
   font-weight: 400;
   vertical-align: middle;
   font-family: 'Merriweather', serif;
-}
-
-.test-input-group {
 }
 
 .wrong {
