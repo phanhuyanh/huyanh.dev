@@ -71,7 +71,8 @@ export default {
       startGame: false,
       time: 60,
       showPopup: false,
-      rank: ''
+      rank: '',
+      gameOver: false
     }
   },
   computed: {
@@ -85,6 +86,7 @@ export default {
   mounted() {
     var input = document.querySelector('.test-input');
     input.addEventListener('keyup', e => {
+      if (this.gameOver) return input.contentEditable = 'false';
       if(!this.startGame) this.init()
       this.startGame = true
       let value = input.innerHTML.replace('&nbsp;', '').replace(/<.+>.+<.+>/, '')
@@ -124,6 +126,7 @@ export default {
     },
     notice() {
       this.showPopup = true
+      this.gameOver = true;
       if(this.score < 30) this.rank = 'turtle', this.nameRank = 'Turtle'
       else if(this.score < 40) this.rank = 't-rex',  this.nameRank = 'T-Rex'
       else this.rank = 'octopus',  this.nameRank = 'Octopus'
@@ -144,6 +147,7 @@ export default {
       this.group = []
       this.wrong = false
       this.rank = ''
+      this.gameOver = false;
     },
     trigger() {
       this.$refs['edit'].focus()
@@ -217,7 +221,7 @@ export default {
   overflow: hidden;
   display: flex;
   align-items: center;
-  font-size: 2.3em;
+  font-size: 1.9em;
   font-family: 'Merriweather', serif;
 }
 
