@@ -229,6 +229,7 @@ export default {
   justify-content: flex-end;
   cursor: pointer;
   font-family: 'Merriweather', serif;
+  white-space: nowrap;
 }
 
 .test-input {
