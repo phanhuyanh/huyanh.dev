@@ -84,6 +84,7 @@ export default {
     this.reset()
   },
   mounted() {
+    console.log('hola')
     var input = document.querySelector('.test-input');
     input.addEventListener('keyup', e => {
       if (this.gameOver) return input.contentEditable = 'false';
