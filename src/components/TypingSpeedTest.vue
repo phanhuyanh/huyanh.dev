@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="typing-speed-test">
     <div class="popup-overlay" v-if="showPopup">
       <div class="popup" :class="{turtle: rank == 'turtle', 't-rex': rank == 't-rex', 'octopus': rank == 'octopus'}">
         <div class="popup-close" @click="reset">X</div>
