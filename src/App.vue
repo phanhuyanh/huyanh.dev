@@ -43,8 +43,7 @@
           <span v-for="(word, idx) in group" :key="idx" 
           :class="{wrong: word !== words[idx]}">{{ word }}</span>
         </div>
-        <div contenteditable="true" class="test-input"
-        autocomplete="off" autocorrect="off" :class="{wrong: wrong}" ref="edit"></div>
+        <div :contenteditable="editable" class="test-input" autocomplete="off" autocorrect="off" :class="{wrong: wrong}" ref="edit"></div>
       </div>
       <div class="list-words">
         <span v-for="(word, idx) in getWords" :key="idx">{{ word }}</span>
@@ -72,7 +71,9 @@ export default {
       time: 60,
       showPopup: false,
       rank: '',
-      gameOver: false
+      gameOver: false,
+      tmp: '',
+      editable: true
     }
   },
   computed: {
@@ -80,41 +81,56 @@ export default {
       return this.words.slice(this.start)
     }
   },
-  created() {
-    this.reset()
-  },
   mounted() {
-    console.log('hola')
-    var input = document.querySelector('.test-input');
-    input.addEventListener('keyup', e => {
-      if (this.gameOver) return input.contentEditable = 'false';
+    this.reset()
+    var input = this.$refs['edit']
+    
+    input.addEventListener('keydown', e => {
+      if(this.gameOver) return this.editable = false
       if(!this.startGame) this.init()
       this.startGame = true
-      let value = input.innerHTML.replace('&nbsp;', '').replace(/<.+>.+<.+>/, '')
-      
-      if(e.keyCode !== 32 && e.keyCode !== 13) {
-        this.wrong = this.word.indexOf(value)
-        this.i = !this.wrong ? value.length : this.i
+
+      if(e.keyCode > 47 && e.keyCode < 58 || e.keyCode > 64 && e.keyCode < 91) {
+        let caret = this.showCaretPos()
+        this.tmp = this.tmp.slice(0, caret) + e.key + this.tmp.slice(caret)
+        this.wrong = !this.word.startsWith(this.tmp)
+        this.i += !this.wrong
         this.$set(this.words, this.start, this.word.slice(this.i))
         return
       }
-      if(!value) return input.innerHTML = ''
-      
-      this.group.push(value)
 
-      this.score += value === this.word
-      this.chars += value === this.word ? value.length : 0
-      this.accuracy = (this.score / this.group.length * 100).toFixed(0)
+      if(e.keyCode == 46 || e.keyCode === 8) {
+        let caret = this.showCaretPos()
+        this.tmp = this.tmp.split``.filter((_,i) => i !== caret - 2).join``
+        let index = 0
 
-      input.innerHTML = ''
-      this.i = 0
-      this.$set(this.words, this.start, this.word)
-      this.words.push(...randomWords(1))
-      this.start++
-      this.word = this.words[this.start]
-      this.wrong = false
+        for(let i = 0; i < this.tmp.length; i++) {
+          if(this.tmp[i] !== this.word[i]) break
+          index++
+        }
+        this.i = index
+        this.$set(this.words, this.start, this.word.slice(this.i))
+        this.wrong = !this.word.startsWith(this.tmp)
+        return
+      }
+
+      if(e.keyCode == 32 || e.keyCode == 13) {
+        if(e.keyCode === 13) e.preventDefault()
+        this.group.push(this.tmp)
+
+        this.score += this.tmp === this.word
+        this.chars += this.tmp === this.word ? this.tmp.length : 0
+        this.accuracy = (this.score / this.group.length * 100).toFixed(0)
+
+        input.innerHTML = this.tmp = ''
+        this.i = 0
+        this.$set(this.words, this.start, this.word)
+        this.words.push(...randomWords(1))
+        this.start++
+        this.word = this.words[this.start]
+        this.wrong = false
+      }
     })
-
   },
   methods: {
     init() {
@@ -127,12 +143,11 @@ export default {
     },
     notice() {
       this.showPopup = true
-      this.gameOver = true;
+      this.gameOver = true
       if(this.score < 30) this.rank = 'turtle', this.nameRank = 'Turtle'
       else if(this.score < 40) this.rank = 't-rex',  this.nameRank = 'T-Rex'
       else this.rank = 'octopus',  this.nameRank = 'Octopus'
-      var input = document.querySelector('.test-input');
-      input.innerHTML = ''
+      this.editable = false
     },
     reset() {
       this.showPopup = false
@@ -140,7 +155,7 @@ export default {
       this.accuracy = 0
       this.score = 0
       this.chars = 0
-      this.words = randomWords(20);
+      this.words = randomWords(20)
       this.word = this.words[0]
       this.i = 0
       this.start = 0
@@ -148,10 +163,40 @@ export default {
       this.group = []
       this.wrong = false
       this.rank = ''
-      this.gameOver = false;
+      this.gameOver = false
+      this.editable = true
+      var input = document.querySelector('.test-input')
+      input.innerHTML = this.tmp = ''
     },
     trigger() {
       this.$refs['edit'].focus()
+    },
+    showCaretPos() {
+      let el = this.$refs['edit']
+      return this.getCaretCharacterOffsetWithin(el)
+    },
+    getCaretCharacterOffsetWithin(element) {
+      var caretOffset = 0
+      var doc = element.ownerDocument || element.document
+      var win = doc.defaultView || doc.parentWindow
+      var sel
+      if (typeof win.getSelection != "undefined") {
+        sel = win.getSelection()
+        if (sel.rangeCount > 0) {
+          var range = win.getSelection().getRangeAt(0)
+          var preCaretRange = range.cloneRange()
+          preCaretRange.selectNodeContents(element)
+          preCaretRange.setEnd(range.endContainer, range.endOffset)
+          caretOffset = preCaretRange.toString().length
+        }
+      } else if ( (sel = doc.selection) && sel.type != "Control") {
+        var textRange = sel.createRange()
+        var preCaretTextRange = doc.body.createTextRange()
+        preCaretTextRange.moveToElementText(element)
+        preCaretTextRange.setEndPoint("EndToEnd", textRange)
+        caretOffset = preCaretTextRange.text.length
+      }
+      return caretOffset
     }
   }
 }
