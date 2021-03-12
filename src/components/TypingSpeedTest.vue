@@ -101,14 +101,12 @@ export default {
 
       if(e.keyCode == 46 || e.keyCode === 8) {
         let caret = this.showCaretPos()
-        this.tmp = this.tmp.split``.filter((_,i) => i !== caret - 2).join``
-        let index = 0
+        caret = this.tmp.length === caret ? caret - 1 : caret - 2
+        this.tmp = this.tmp.split``.filter((_,i) => i !== caret).join``
 
-        for(let i = 0; i < this.tmp.length; i++) {
-          if(this.tmp[i] !== this.word[i]) break
-          index++
-        }
-        this.i = index
+        let f = (a, b, i) => i > a.length || a[i] !== b[i] ? i : f(a, b, i + 1)
+
+        this.i = f(this.tmp, this.word, 0)
         this.$set(this.words, this.start, this.word.slice(this.i))
         this.wrong = !this.word.startsWith(this.tmp)
         return
