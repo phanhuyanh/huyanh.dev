@@ -21,4 +21,4 @@ npm run lint
 ```
 
 ### Demo
-[Link](https://6gn52.csb.app)
+[Link](https://huyanhdev.herokuapp.com)
