@@ -5,10 +5,13 @@ const history = require('connect-history-api-fallback')
 const path = require('path')
 
 app.use(express.static(path.join(__dirname, 'dist')))
-app.use(history())
 
-app.get('/*/', (req, res) => {
+// url không bắt đầu bằng _ là client
+app.get(/^[^_].*/, history(), (req, res) => {
+  console.log(req.url, 'rul')
   res.sendFile(__dirname + '/dist/index.html')
 })
+
+// end point bắt đầu bằng _
 
 app.listen(PORT, () => console.log(`Server is running at http://localhost:${PORT}`))
