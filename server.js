@@ -13,5 +13,8 @@ app.get(/^[^_].*/, history(), (req, res) => {
 })
 
 // end point bắt đầu bằng _
+app.get('/_test', (req, res) => {
+  res.send('Endpoint')
+})
 
 app.listen(PORT, () => console.log(`Server is running at http://localhost:${PORT}`))
