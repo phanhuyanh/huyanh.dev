@@ -2,6 +2,7 @@
   <div>
     <h1>FB Pixel</h1>
     <button @click.stop="trackingPurchase">Purchase</button>
+    <button @click.stop="trackingCustomConversion">Share Discount</button>
   </div>
 </template>
 
@@ -30,7 +31,12 @@ export default {
   },
   methods: {
     trackingPurchase() {
+      // đối tượng tiêu chuẩn có tên (track, event_name, obj: data)
       window.fbq('track', 'Purchase', {currency: "USD", value: 30.00})
+    },
+    trackingCustomConversion() {
+      // đối tượng tùy chỉnh có tên (trackCustom, event_name_custom, obj: data)
+      window.fbq('trackCustom', 'ShareDiscount', {promotion: 'share_discount_10%'})
     }
   }
 }
