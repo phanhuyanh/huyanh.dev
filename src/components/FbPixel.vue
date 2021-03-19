@@ -1,5 +1,8 @@
 <template>
-  <h1>FB Pixel</h1>
+  <div>
+    <h1>FB Pixel</h1>
+    <button @click.stop="trackingPurchase">Purchase</button>
+  </div>
 </template>
 
 <script>
@@ -24,6 +27,11 @@ export default {
     let noscript = document.createElement('noscript')
     noscript.innerHTML = `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=336402291023583&ev=PageView&noscript=1"/>`
     document.head.appendChild(noscript)
+  },
+  methods: {
+    trackingPurchase() {
+      window.fbq('track', 'Purchase', {currency: "USD", value: 30.00})
+    }
   }
 }
 </script>
