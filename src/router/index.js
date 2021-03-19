@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router'
 const TypingSpeedTest = () => import('../components/TypingSpeedTest.vue')
+const FbPixel = () => import('../components/FbPixel.vue')
 
 const routes = [
   {
@@ -11,6 +12,11 @@ const routes = [
     path: '/typing-speed-test',
     name: 'typing-speed-test',
     component: TypingSpeedTest 
+  },
+  {
+    path: '/learn-fb-pixel',
+    name: 'learn-fb-pixel',
+    component: FbPixel
   }
 ]
 
