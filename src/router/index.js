@@ -1,6 +1,7 @@
 import VueRouter from 'vue-router'
 const TypingSpeedTest = () => import('../components/TypingSpeedTest.vue')
 const FbPixel = () => import('../components/FbPixel.vue')
+const GGAnalytic = () => import('../components/GGAnalytic.vue')
 
 const routes = [
   {
@@ -17,6 +18,11 @@ const routes = [
     path: '/learn-fb-pixel',
     name: 'learn-fb-pixel',
     component: FbPixel
+  },
+  {
+    path: '/learn-gganalytic',
+    name: 'learn-gganalytic',
+    component: GGAnalytic
   }
 ]
 
