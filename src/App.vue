@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 export default {
   name: 'App',
   mounted() {
@@ -22,3 +21,4 @@ export default {
     gtag('config', 'G-BNVENFG6DF')
   }
 }
+</script>

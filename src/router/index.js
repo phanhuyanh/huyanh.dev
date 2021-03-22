@@ -7,7 +7,7 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    redirect: '/typing-speed-test' 
+    redirect: '/typing-speed-test'
   },
   {
     path: '/typing-speed-test',

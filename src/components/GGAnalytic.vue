@@ -5,7 +5,7 @@
 <script>
 export default {
   mounted() {
-    // Global site tag (Universal Analytic)
+    // Global site tag (Universal Analytic) mục đích cho việc tracking
     let script = document.createElement('script')
     script.async = true
     script.src = `https://www.googletagmanager.com/gtag/js?id=UA-191976170-1`
