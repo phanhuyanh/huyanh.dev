@@ -20,8 +20,8 @@ const routes = [
     component: FbPixel
   },
   {
-    path: '/learn-gganalytic',
-    name: 'learn-gganalytic',
+    path: '/learn-gganalytic-UA',
+    name: 'learn-gganalytic-UA',
     component: GGAnalytic
   }
 ]
