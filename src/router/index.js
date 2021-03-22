@@ -3,6 +3,7 @@ const TypingSpeedTest = () => import('../components/TypingSpeedTest.vue')
 const FbPixel = () => import('../components/FbPixel.vue')
 const GGAnalytic = () => import('../components/GGAnalytic.vue')
 const GGTagManager = () => import('../components/GGTagManager.vue')
+const Calendly = () => import('../components/Calendly.vue')
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
     path: '/learn-gg-tag-manager',
     name: 'learn-gg-tag-manager',
     component: GGTagManager
+  },
+  {
+    path: '/calendly',
+    name: 'calendly',
+    component: Calendly
   }
 ]
 
