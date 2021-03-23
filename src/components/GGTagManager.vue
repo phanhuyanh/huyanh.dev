@@ -1,6 +1,7 @@
 <template>
   <div class="google-tag-manager">
     Google Tag Manager
+    <a href="#" name="button1" onclick="dataLayer.push({'event': 'button1-click'});" >Button 1</a>
   </div>
 </template>
 

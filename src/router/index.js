@@ -5,6 +5,8 @@ const GGAnalytic = () => import('../components/GGAnalytic.vue')
 const GGTagManager = () => import('../components/GGTagManager.vue')
 const Calendly = () => import('../components/Calendly.vue')
 
+import landingPage from './landing_page/index.js'
+
 const routes = [
   {
     path: '/',
@@ -35,7 +37,8 @@ const routes = [
     path: '/calendly',
     name: 'calendly',
     component: Calendly
-  }
+  },
+  landingPage
 ]
 
 const router = new VueRouter({
