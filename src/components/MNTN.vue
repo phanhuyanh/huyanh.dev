@@ -39,11 +39,10 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 @import url('http://fonts.cdnfonts.com/css/chronicle-display');
-:root {
-  --color-link-hover: #fbd784;
-}
+$color-link-hover: #fbd784;
+
 .MNTN {
   font-family: 'Sans Serif', Arial, sans-serif;
   color: #fff;
@@ -100,7 +99,7 @@ export default {
   transform: translate3d(0, -2px, 0);
 }
 .header .nav li:hover a {
-  color: #fbd784;
+  color: $color-link-hover;
 }
 .header .nav li a {
   text-decoration: none;
@@ -115,7 +114,7 @@ export default {
   cursor: pointer;
 }
 .header .account:hover {
-  color: #fbd784;
+  color: $color-link-hover;
 }
 .header .account:hover svg path {
   fill: #fbd784;
