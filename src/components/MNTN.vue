@@ -425,6 +425,9 @@ img {
   @include table {
     padding-bottom: 150px;
   }
+  @include mobile {
+    padding-bottom: 150px;
+  }
   &:first-child {
     background: linear-gradient(180deg, rgba(11, 29, 38, 0), #0b1d26 20%);
     padding-top: 200px;
