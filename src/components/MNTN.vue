@@ -190,10 +190,17 @@ export default {
 @import url('http://fonts.cdnfonts.com/css/chronicle-display');
 $color-link-hover: #fbd784;
 $mobile: 768px;
+$table: 992px;
 
 @font-face {
   font-family: serifDisplaySemiBold;
   src: url('../assets/font/SerifDisplay-Semibold.otf') format("opentype");
+}
+
+@mixin table {
+  @media screen and (max-width: $table) and (min-width: $mobile){
+    @content;
+  }
 }
 
 @mixin mobile {
@@ -227,6 +234,10 @@ $mobile: 768px;
 .container {
   padding: 0 80px;
   width: 100%;
+  @include mobile() {
+    padding: 0 15px;
+
+  }
 }
 .d-flex {
   display: flex;
@@ -318,6 +329,9 @@ h1, h2 {
   text-transform: capitalize;
   margin-bottom: 32px;
   font-family: serifDisplaySemiBold;
+  @include mobile() {
+    font-size: 40px;
+  }
 }
 .scroll-down, .read-more {
   display: flex;
@@ -370,6 +384,12 @@ img {
   max-width: 100%;
   vertical-align: middle;
   display: inline-block;
+  @include table {
+    width: 100%;
+  }
+  @include mobile {
+    width: 100%;
+  }
 }
 .vg {
   position: absolute;
@@ -401,7 +421,10 @@ img {
   position: relative;
   background: linear-gradient(180deg, #0b1d26, #0b1d26 20%);
   z-index: 50;
-  height: 100vh;
+  min-height: 100vh;
+  @include table {
+    padding-bottom: 150px;
+  }
   &:first-child {
     background: linear-gradient(180deg, rgba(11, 29, 38, 0), #0b1d26 20%);
     padding-top: 200px;
@@ -410,9 +433,19 @@ img {
     flex-direction: row-reverse;
     .section-img {
       justify-content: flex-start;
+      @include table {
+        justify-content: center;
+      }
+      @include mobile {
+        justify-content: center;
+      }
+    }
+    @include table {
+      flex-direction: column-reverse;
     }
     @include mobile {
       flex-direction: column-reverse;
+      padding-bottom: 30px;
     }
   }
   .section-wrapper {
@@ -421,6 +454,9 @@ img {
     margin-left: auto;
     margin-right: auto;
     display: flex;
+    @include table {
+      flex-direction: column-reverse;
+    }
     @include mobile() {
       flex-direction: column-reverse;
     }
@@ -428,6 +464,10 @@ img {
   h2 {
     font-size: 64px;
     line-height: 74px; 
+    @include mobile {
+      font-size: 40px;
+      line-height: 55px;
+    }
   }
   .section-content {
     flex-basis: 40%;
@@ -440,6 +480,9 @@ img {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 80px;
+    @include mobile {
+      justify-content: center;
+    }
   }
   p {
     font-size: 18px;
@@ -467,14 +510,21 @@ img {
     font-weight: bold;
     left: -21%;
     color: #fff;
+    z-index: -1;
+    @include table {
+      left: 0;
+      top: -30%;
+    }
     @include mobile {
-      left: -12%;
+      left: 0%;
+      top: -30%;
     }
   }
 }
 
 .footer {
   height: initial;
+  min-height: unset;
   padding-bottom: 50px;
   @include mobile {
     padding-bottom: 0;
@@ -495,6 +545,9 @@ img {
     width: 556px;
     display: flex;
     justify-content: space-between;
+    @include mobile {
+      width: unset;
+    }
   }
   .more-blog, .more-landing-page {
     ul {
@@ -517,11 +570,17 @@ img {
     }
   }
   .more-landing-page {
+    @include table {
+      display: none;
+    }
     @include mobile {
       display: none;
     }
   }
   .section-wrapper {
+    @include table {
+      flex-direction: column;
+    }
     @include mobile {
       flex-direction: column;
     }
@@ -529,6 +588,7 @@ img {
   .section-img {
     margin-top: 60px;
     margin-bottom: 60px;
+    justify-content: unset;
   }
 }
 </style>
