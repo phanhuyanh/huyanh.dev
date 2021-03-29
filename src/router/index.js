@@ -38,7 +38,7 @@ const routes = [
     name: 'calendly',
     component: Calendly
   },
-  landingPage
+  ...landingPage
 ]
 
 const router = new VueRouter({
