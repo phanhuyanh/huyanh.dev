@@ -190,7 +190,7 @@ export default {
 @import url('http://fonts.cdnfonts.com/css/chronicle-display');
 $color-link-hover: #fbd784;
 $mobile: 768px;
-$table: 992px;
+$table: 1200px;
 
 @font-face {
   font-family: serifDisplaySemiBold;
