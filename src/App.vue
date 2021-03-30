@@ -8,6 +8,7 @@
 export default {
   name: 'App',
   mounted() {
+    if(process.env.NODE_ENV !== 'production') return
     // Use global site tag
     let script = document.createElement('script')
     script.async = true
