@@ -1,4 +1,4 @@
-# typing-speed-test
+# Huyme.dev
 
 ## Project setup
 ```
