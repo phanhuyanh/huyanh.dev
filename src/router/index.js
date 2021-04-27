@@ -4,6 +4,7 @@ const FbPixel = () => import('../components/FbPixel.vue')
 const GGAnalytic = () => import('../components/GGAnalytic.vue')
 const GGTagManager = () => import('../components/GGTagManager.vue')
 const Calendly = () => import('../components/Calendly.vue')
+const TouchEvent = () => import('../components/TouchEvent.vue')
 
 import landingPage from './landing_page/index.js'
 
@@ -37,6 +38,11 @@ const routes = [
     path: '/calendly',
     name: 'calendly',
     component: Calendly
+  },
+  {
+    path: '/touch-event',
+    name: 'touch event',
+    component: TouchEvent
   },
   ...landingPage
 ]
