@@ -36,9 +36,6 @@ export default {
     // },
     touchstart(evt) {
       evt.preventDefault()
-      var touchobj = evt.changedTouches[0]
-      this.x = touchobj.clientX
-      this.y = touchobj.clientY
       this.$refs.area.style.backgroud = 'blue'
     },
     touchmove(evt) {
@@ -50,9 +47,6 @@ export default {
     },
     touchend(evt) {
       evt.preventDefault()
-      var touchobj = evt.changedTouches[0]
-      this.x = touchobj.clientX
-      this.y = touchobj.clientY
       this.$refs.area.style.backgroud = ''
       //this.$refs.area.removeEventListener('touchmove', this.touchmove, false)
       //this.$refs.area.removeEventListener('touchend', this.touchend, false)
