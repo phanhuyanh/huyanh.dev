@@ -1,17 +1,17 @@
 <template>
   <div class="touch-event">
-    <div class="area" @mousedown="mousedown" ref="area"></div>
+    <div class="area" @mousedown="mousedown" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" ref="area"></div>
   </div>
 </template>
 
 <script>
 export default {
   mounted() {
-    window.addEventListener('DOMContentLoaded', function() {
-      this.$refs.area.addEventListener('touchstart', this.touchstart, false)
-      this.$refs.area.addEventListener('touchmove', this.touchmove, false)
-      this.$refs.area.addEventListener('touchend', this.touchend, false)
-    })
+    // window.addEventListener('DOMContentLoaded', function() {
+    //   this.$refs.area.addEventListener('touchstart', this.touchstart, false)
+    //   this.$refs.area.addEventListener('touchmove', this.touchmove, false)
+    //   this.$refs.area.addEventListener('touchend', this.touchend, false)
+    // })
   },
   methods: {
     mousedown() {
