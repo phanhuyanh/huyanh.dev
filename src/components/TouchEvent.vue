@@ -37,8 +37,9 @@ export default {
     // },
     touchstart(evt) {
       evt.preventDefault()
-      this.x = 0
-      this.y = 0
+      let touchobj = evt.changedTouches[0]
+      this.x = touchobj.clientX
+      this.y = touchobj.clientY
       this.$refs.area.style.backgroud = 'blue'
 
       this.$refs.area.addEventListener('touchmove', this.touchmove)
