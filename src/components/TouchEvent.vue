@@ -1,7 +1,8 @@
 <template>
   <div class="touch-event">
-    <div class="area" @mousedown="mousedown" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" ref="area"></div>
-    {{ x }} -  {{ y }}
+    <div class="area" @mousedown="mousedown" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" ref="area">
+      {{ x }} -  {{ y }}
+    </div>
   </div>
 </template>
 
