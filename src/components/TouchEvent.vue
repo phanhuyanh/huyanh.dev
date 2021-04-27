@@ -49,6 +49,8 @@ export default {
     touchend(evt) {
       evt.preventDefault()
       this.$refs.area.style.backgroud = ''
+      this.x = 0
+      this.y = 0
       //this.$refs.area.removeEventListener('touchmove', this.touchmove, false)
       //this.$refs.area.removeEventListener('touchend', this.touchend, false)
     }
