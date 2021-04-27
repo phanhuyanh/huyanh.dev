@@ -1,11 +1,16 @@
 <template>
   <div class="touch-event">
-    <div class="area" @mousedown="mousedown" @touchstart="touchstart" ref="area"></div>
+    <div class="area" @mousedown="mousedown" ref="area"></div>
   </div>
 </template>
 
 <script>
 export default {
+  mounted() {
+    window.addEventListener('load', function() {
+      this.$refs.area.addEventListener('touchstart', this.touchstart, false)
+    })
+  },
   methods: {
     mousedown() {
       this.$refs.area.style.borderColor = '#ccc'
@@ -33,6 +38,9 @@ export default {
       this.$refs.area.removeEventListener('touchmove', this.touchmove, false)
       this.$refs.area.removeEventListener('touchend', this.touchend, false)
     }
+  },
+  beforeDestroy() {
+    this.$refs.area.removeEventListener('touchstart', this.touchstart, false)
   }
 }
 </script>
