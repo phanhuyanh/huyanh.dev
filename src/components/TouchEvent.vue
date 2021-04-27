@@ -1,6 +1,6 @@
 <template>
   <div class="touch-event">
-    <div class="area" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" ref="area">
+    <div class="area" @touchstart="touchstart" ref="area">
       {{ x }} -  {{ y }}
     </div>
   </div>
@@ -40,6 +40,9 @@ export default {
       this.x = 0
       this.y = 0
       this.$refs.area.style.backgroud = 'blue'
+
+      this.$refs.area.addEventListener('touchmove', this.touchmove)
+      this.$refs.area.addEventListener('touchend', this.touchend)
     },
     touchmove(evt) {
       evt.preventDefault()
