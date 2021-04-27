@@ -1,6 +1,6 @@
 <template>
   <div class="touch-event">
-    <div class="area" @mousedown="mousedown" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" ref="area">
+    <div class="area" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" ref="area">
       {{ x }} -  {{ y }}
     </div>
   </div>
@@ -22,19 +22,19 @@ export default {
     // })
   },
   methods: {
-    mousedown() {
-      this.$refs.area.style.borderColor = '#ccc'
-      this.$refs.area.addEventListener('mousemove', this.mousemove)
-      this.$refs.area.addEventListener('mouseup', this.mouseup)
-    },
-    mousemove() {
-      this.$refs.area.style.borderColor = 'red'
-    },
-    mouseup() {
-      this.$refs.area.style.borderColor = ''
-      this.$refs.area.removeEventListener('mousemove', this.mousemove)
-      this.$refs.area.removeEventListener('mouseup', this.mouseup)
-    },
+    // mousedown() {
+    //   this.$refs.area.style.borderColor = '#ccc'
+    //   this.$refs.area.addEventListener('mousemove', this.mousemove)
+    //   this.$refs.area.addEventListener('mouseup', this.mouseup)
+    // },
+    // mousemove() {
+    //   this.$refs.area.style.borderColor = 'red'
+    // },
+    // mouseup() {
+    //   this.$refs.area.style.borderColor = ''
+    //   this.$refs.area.removeEventListener('mousemove', this.mousemove)
+    //   this.$refs.area.removeEventListener('mouseup', this.mouseup)
+    // },
     touchstart(evt) {
       evt.preventDefault()
       this.x = 0
