@@ -1,11 +1,18 @@
 <template>
   <div class="touch-event">
     <div class="area" @mousedown="mousedown" @touchstart="touchstart" @touchmove="touchmove" @touchend="touchend" ref="area"></div>
+    {{ x }} -  {{ y }}
   </div>
 </template>
 
 <script>
 export default {
+  data: () => {
+    return {
+      x: 0,
+      y: 0
+    }
+  },
   mounted() {
     // window.addEventListener('DOMContentLoaded', function() {
     //   this.$refs.area.addEventListener('touchstart', this.touchstart, false)
@@ -33,6 +40,9 @@ export default {
     },
     touchmove(evt) {
       evt.preventDefault()
+      var touchobj = evt.changedTouches[0]
+      this.x = touchobj.clientX
+      this.y = touchobj.clientY
       this.$refs.area.style.background = 'purple'
     },
     touchend(evt) {
