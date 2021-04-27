@@ -7,8 +7,10 @@
 <script>
 export default {
   mounted() {
-    window.addEventListener('load', function() {
+    window.addEventListener('DOMContentLoaded', function() {
       this.$refs.area.addEventListener('touchstart', this.touchstart, false)
+      this.$refs.area.addEventListener('touchmove', this.touchmove, false)
+      this.$refs.area.addEventListener('touchend', this.touchend, false)
     })
   },
   methods: {
@@ -25,18 +27,19 @@ export default {
       this.$refs.area.removeEventListener('mousemove', this.mousemove)
       this.$refs.area.removeEventListener('mouseup', this.mouseup)
     },
-    touchstart() {
+    touchstart(evt) {
+      evt.preventDefault()
       this.$refs.area.style.backgroud = 'blue'
-      this.$refs.area.addEventListener('touchmove', this.touchmove, false)
-      this.$refs.area.addEventListener('touchend', this.touchend, false)
     },
-    touchmove() {
+    touchmove(evt) {
+      evt.preventDefault()
       this.$refs.area.style.background = 'purple'
     },
-    touchend() {
+    touchend(evt) {
+      evt.preventDefault()
       this.$refs.area.style.backgroud = ''
-      this.$refs.area.removeEventListener('touchmove', this.touchmove, false)
-      this.$refs.area.removeEventListener('touchend', this.touchend, false)
+      //this.$refs.area.removeEventListener('touchmove', this.touchmove, false)
+      //this.$refs.area.removeEventListener('touchend', this.touchend, false)
     }
   },
   beforeDestroy() {
