@@ -14,27 +14,7 @@ export default {
       y: 0
     }
   },
-  mounted() {
-    // window.addEventListener('DOMContentLoaded', function() {
-    //   this.$refs.area.addEventListener('touchstart', this.touchstart, false)
-    //   this.$refs.area.addEventListener('touchmove', this.touchmove, false)
-    //   this.$refs.area.addEventListener('touchend', this.touchend, false)
-    // })
-  },
   methods: {
-    // mousedown() {
-    //   this.$refs.area.style.borderColor = '#ccc'
-    //   this.$refs.area.addEventListener('mousemove', this.mousemove)
-    //   this.$refs.area.addEventListener('mouseup', this.mouseup)
-    // },
-    // mousemove() {
-    //   this.$refs.area.style.borderColor = 'red'
-    // },
-    // mouseup() {
-    //   this.$refs.area.style.borderColor = ''
-    //   this.$refs.area.removeEventListener('mousemove', this.mousemove)
-    //   this.$refs.area.removeEventListener('mouseup', this.mouseup)
-    // },
     touchstart(evt) {
       evt.preventDefault()
       let touchobj = evt.changedTouches[0]
@@ -55,19 +35,16 @@ export default {
     touchend(evt) {
       evt.preventDefault()
       this.$refs.area.style.backgroud = ''
-      //this.$refs.area.removeEventListener('touchmove', this.touchmove, false)
-      //this.$refs.area.removeEventListener('touchend', this.touchend, false)
+      this.$refs.area.removeEventListener('touchmove', this.touchmove, false)
+      this.$refs.area.removeEventListener('touchend', this.touchend, false)
     }
-  },
-  beforeDestroy() {
-    this.$refs.area.removeEventListener('touchstart', this.touchstart, false)
   }
 }
 </script>
 
 <style>
 .touch-event {
-  height: 100vh;
+  height: 300vh;
   width: 100%;
   display: grid; 
   place-content: center;
