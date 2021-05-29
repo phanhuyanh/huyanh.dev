@@ -143,15 +143,15 @@ export default {
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))
     grid-gap: 32px 32px
     .item
-      height: 256px
       border: 1px solid #b3b3b373
       border-radius: 4px
       display: flex
       flex-direction: column
       cursor: pointer
+      height: max-content
       .thumbnail
         width: 100%
-        flex: 1
+        height: 200px
         img
           width: 100%
           height: 100%

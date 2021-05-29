@@ -313,6 +313,8 @@ export default {
 
 .test-input-group {
   color: #6174b4;
+  display: flex;
+  align-items: center;
 }
 
 .list-words span:first-child,
