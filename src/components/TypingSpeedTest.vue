@@ -303,6 +303,9 @@ export default {
   color: #6174b4;
   white-space: nowrap;
   font-family: 'Merriweather', serif;
+  display: flex;
+  align-items: center;
+  max-height: 30px;
 }
 
 .list-words {
@@ -315,6 +318,7 @@ export default {
   color: #6174b4;
   display: flex;
   align-items: center;
+  max-height: 30px;
 }
 
 .list-words span:first-child,
