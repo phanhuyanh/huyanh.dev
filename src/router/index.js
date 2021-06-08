@@ -5,6 +5,7 @@ const GGAnalytic = () => import('../components/GGAnalytic.vue')
 const GGTagManager = () => import('../components/GGTagManager.vue')
 const Calendly = () => import('../components/Calendly.vue')
 const TouchEvent = () => import('../components/TouchEvent.vue')
+const RoughRotation = () => import('../components/RoughRotation.vue')
 
 import landingPage from './landing_page/index.js'
 
@@ -43,6 +44,11 @@ const routes = [
     path: '/touch-event',
     name: 'touch event',
     component: TouchEvent
+  },
+  {
+    path: '/rough-rotation',
+    name: 'rough-rotation',
+    component: RoughRotation
   },
   ...landingPage
 ]
