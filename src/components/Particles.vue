@@ -1,6 +1,10 @@
 <template>
   <div class="particles">
     <div id="particles-js" style="height: 100vh; width: 100%;"></div>
+    <div class="document">
+      <h4>particles.js</h4>
+      <a href="https://vincentgarreau.com/particles.js/" target="_blank">Doc</a>
+    </div>
   </div>
 </template>
 
@@ -130,6 +134,37 @@ export default {
 </script>
 
 <style>
+.document {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  z-index: 10000;
+  color: #333;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+  opacity: .01;
+}
+
+.document h4 {
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 32px;
+}
+
+.document a {
+  text-decoration: none;
+  color: blue;
+  font-size: 26px;
+}
+
+
 body {
 	margin: 0;
 	font: normal 75% Arial, Helvetica, sans-serif;
