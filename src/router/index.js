@@ -6,6 +6,7 @@ const GGTagManager = () => import('../components/GGTagManager.vue')
 const Calendly = () => import('../components/Calendly.vue')
 const TouchEvent = () => import('../components/TouchEvent.vue')
 const RoughNotation = () => import('../components/RoughNotation.vue')
+const Particles = () => import('../components/Particles.vue')
 
 import landingPage from './landing_page/index.js'
 
@@ -49,6 +50,11 @@ const routes = [
     path: '/rough-notation',
     name: 'rough-notation',
     component: RoughNotation
+  },
+  {
+    path: '/particles',
+    name: 'particles',
+    component: Particles
   },
   ...landingPage
 ]
