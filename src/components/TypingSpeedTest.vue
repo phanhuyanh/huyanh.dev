@@ -305,7 +305,6 @@ export default {
   font-family: 'Merriweather', serif;
   display: flex;
   align-items: center;
-  max-height: 30px;
 }
 
 .list-words {
@@ -318,7 +317,6 @@ export default {
   color: #6174b4;
   display: flex;
   align-items: center;
-  max-height: 30px;
 }
 
 .list-words span:first-child,
@@ -333,6 +331,10 @@ export default {
   font-weight: 400;
   vertical-align: middle;
   font-family: 'Merriweather', serif;
+}
+
+.list-words span {
+  line-height: 38px;
 }
 
 .wrong {
