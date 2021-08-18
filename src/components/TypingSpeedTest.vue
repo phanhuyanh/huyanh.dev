@@ -85,6 +85,7 @@ export default {
     if(process.env.NODE_ENV === 'production') this.setTiktokPixel()
     this.reset()
     var input = this.$refs['edit']
+    this.$nextTick(() => input.focus())
     
     input.addEventListener('keydown', e => {
       if(this.gameOver) return this.editable = false
@@ -166,6 +167,8 @@ export default {
       this.editable = true
       var input = document.querySelector('.test-input')
       input.innerHTML = this.tmp = ''
+
+      this.$nextTick(() => this.$refs['edit'].focus())
     },
     trigger() {
       this.$refs['edit'].focus()
